@@ -1,0 +1,15 @@
+<header class="header-outer">
+    <div class="header-inner responsive-wrapper">
+      <div class="header-logo">
+        <img src="https://assets.codepen.io/285131/acme-2.svg" />
+      </div>
+      <nav class="header-navigation">
+        <a href="#" *ngIf="menuOpen || isDesktop">Home</a>
+        <a href="#" *ngIf="menuOpen || isDesktop">About</a>
+        <a href="#" *ngIf="menuOpen || isDesktop">Blog</a>
+        <a href="#" *ngIf="menuOpen || isDesktop">Contact Us</a>
+        <button (click)="toggleMenu()">Menu</button>
+      </nav>
+    </div>
+  </header>
+  
