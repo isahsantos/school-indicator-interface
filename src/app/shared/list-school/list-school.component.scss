@@ -1,0 +1,112 @@
+.school-card {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+    max-width: 300px;
+    margin: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .school-card-image {
+    position: relative;
+  }
+  
+  .school-card-image img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .status-label {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    background-color: #28a745;
+    color: white;
+    padding: 2px 8px;
+    font-size: 12px;
+    border-radius: 4px;
+  }
+  
+  .school-card-content {
+    padding: 16px;
+    text-align: center;
+  }
+  
+  .school-card-category {
+    font-size: 14px;
+    color: #757575;
+    margin-bottom: 8px;
+  }
+  
+  .school-card-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+  
+  .school-card-location {
+    font-size: 14px;
+    color: #757575;
+    margin-bottom: 8px;
+  }
+  
+  .school-card-fee {
+    font-size: 16px;
+    color: #212121;
+    margin-bottom: 16px;
+  }
+  
+  .school-card-rating {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+  }
+  
+  .star {
+    color: #ffc107;
+    margin-left: 4px;
+  }
+  
+  .contact-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .contact-button:hover {
+    background-color: #0056b3;
+  }
+  .school-cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .school-card {
+    flex: 1 1 calc(100% - 32px);
+    max-width: calc(100% - 32px);
+    margin: 16px;
+  }
+  
+  @media (min-width: 576px) {
+    .school-card {
+      flex: 1 1 calc(50% - 32px);
+      max-width: calc(50% - 32px);
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .school-card {
+      flex: 1 1 calc(33.33% - 32px);
+      max-width: calc(33.33% - 32px);
+    }
+  }
+  
