@@ -1,0 +1,36 @@
+.chip {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 16px;
+    font-size: 14px;
+    color: #000;
+    background-color: #e0e0e0;
+    margin: 2px;
+  }
+  
+  .chip.default {
+    background: linear-gradient(135deg, #9e9e9e 0%, #616161 100%);
+    color: #ffffff;
+}
+
+.chip.red {
+    background: linear-gradient(135deg, #ff5252 0%, #ff7070 100%);
+    color: #ffffff;
+}
+
+.chip.blue {
+    background: linear-gradient(135deg, #3366ff 0%, #0033cc 100%);
+    color: #ffffff;
+}
+
+.chip.green {
+    background: linear-gradient(135deg, #388e3c 0%, #8ec791 100%);
+    color: #ffffff;
+}
+
+.chip.yellow {
+    background: linear-gradient(135deg, #ffb300 0%, #f5a742 100%);
+    color: #ffffff;
+}
+
+  

@@ -1,8 +1,10 @@
 <div class="school-cards-container">
-    <div *ngFor="let escola of escolas" class="school-card">
+    <div *ngFor="let escola of escolas, let i = index" class="school-card">
       <div class="school-card-image">
         <img [src]=" escola.imagem_url" alt="{{ escola.nome }}">
-        <span class="status-label">matriculas abertas 2024</span>
+        <span class="status-label">
+            <app-chip [text]="statusChips[i].text" [color]="statusChips[i].color"></app-chip>
+          </span>
       </div>
       <div class="school-card-content">
         <div class="school-card-category">Escola</div>
@@ -11,7 +13,6 @@
         <div class="school-card-fee">Mensalidade: R$ {{ escola.mensalidade }}</div>
         <div class="school-card-rating">
           <span>{{ escola.avaliacao || 'Sem Avaliação' }}</span> 
-          <span class="star">⭐</span>
         </div>
         <button class="contact-button">Entrar em Contato</button>
       </div>

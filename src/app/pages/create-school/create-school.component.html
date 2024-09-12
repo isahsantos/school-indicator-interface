@@ -1,1 +1,145 @@
-<p>create-school works!</p>
+<app-header></app-header>
+
+<section *ngIf="!isLoading">
+  <div class="content-text">
+    <p *ngIf="!isEditMode">Bem vindo ao cadastro de escolas.</p>
+    <p *ngIf="isEditMode">Atualize seus dados aqui.</p>
+    <p *ngIf="!isEditMode">
+      Cadastrar sua escola no sistema de indicação de escolas oferece uma série de vantagens que podem ajudar a expandir a visibilidade e a reputação da sua instituição.<br> Ao registrar sua escola, você garante que ela será facilmente encontrada por pais e responsáveis que estão em busca da melhor opção de ensino para seus filhos.
+    </p>
+    <p *ngIf="!isEditMode">Veja como é fácil:</p>
+  </div>
+
+  <div class="content-education" *ngIf="!isEditMode">
+    <div class="step step1" [ngClass]="{'completed': step1Completed}">
+      <div class="step-header">
+        <div class="step-number">1</div>
+        <div class="step-check">&#10003;</div>
+      </div>
+      <div class="illustration">
+        <img src="../../../assets/img/register.jpg" alt="registre ilustração" width="300px" height="300px">
+      </div>
+      <div class="text">
+        Para cadastrar sua escola, preencha os dados solicitados abaixo. Em seguida, revise as informações e clique em 'Cadastrar Escola'.
+      </div>
+    </div> 
+   
+    <div class="step step2" [ngClass]="{'completed': step2Completed}">
+      <div class="step-header">
+        <div class="step-number">2</div>
+        <div class="step-check">&#10003;</div>
+      </div>
+      <div class="illustration">
+        <img src="../../../assets/img/confirmed.svg" alt="confirmed ilustração" width="300px" height="300px">
+      </div>
+      <div class="text">
+        Após a mensagem de confirmação na tela, sua escola estará salva em nossa base de dados.
+      </div>
+    </div> 
+  
+    <div class="step step3" [ngClass]="{'completed': step3Completed}">
+      <div class="step-header">
+        <div class="step-number">3</div>
+        <div class="step-check">&#10003;</div>
+      </div>
+      <div class="illustration">
+        <img src="../../../assets/img/visible.svg" alt="visibled ilustração" width="300px" height="300px">
+      </div>
+      <div class="text">
+        Pronto! Sua escola agora está visível em nosso site, para que pais e responsáveis possam entrar em contato com você.
+      </div>
+    </div> 
+  </div>
+
+  <div class="access-existing" *ngIf="!isEditMode">
+    <mat-chip color="accent" selected>Já tenho cadastro</mat-chip>
+    <p>Caso você já tenha cadastro, informe aqui o código da escola. Ao clicar em acessar você será redirecionado. </p>
+    <div class="access-form">
+      <mat-form-field appearance="outline" class="example-full-width custom-height-input">
+        <mat-label>ID Responsável</mat-label>
+        <input matInput [(ngModel)]="schoolId">
+      </mat-form-field>
+      <button mat-raised-button color="primary" (click)="accessSchoolEdit()">Acessar</button>
+    </div>
+  </div>
+
+  <div>
+    <form [formGroup]="escolaForm" (ngSubmit)="onSubmit()" class="example-form">
+      <div class="form-content">
+        <mat-form-field class="example-full-width">
+          <mat-label>Nome</mat-label>
+          <input matInput formControlName="nome" required>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Telefone</mat-label>
+          <input matInput formControlName="telefone" required>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>CEP</mat-label>
+          <input matInput formControlName="cep" required (blur)="buscarEndereco()">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Rua</mat-label>
+          <input matInput formControlName="rua" readonly>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Número</mat-label>
+          <input matInput formControlName="numero" required>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Bairro</mat-label>
+          <input matInput formControlName="bairro" readonly>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Cidade</mat-label>
+          <input matInput formControlName="cidade" readonly>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Estado</mat-label>
+          <input matInput formControlName="estado" readonly>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Mensalidade</mat-label>
+          <input matInput type="number" formControlName="mensalidade" required>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Quantidade de Alunos</mat-label>
+          <input matInput type="number" formControlName="quantidade_alunos" required>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Metodologia</mat-label>
+          <input matInput formControlName="metodologia" required>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Email</mat-label>
+          <input matInput type="email" formControlName="email" required>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Imagem URL</mat-label>
+          <input matInput formControlName="imagem_url">
+        </mat-form-field>
+      </div>
+    </form>   
+  </div>
+</section>
+
+<footer class="fixed-footer">
+  <button mat-raised-button color="primary" style="margin-right: 40px;" (click)="onSubmit()" [disabled]="escolaForm.invalid">{{ isEditMode ? 'Atualizar' : 'Cadastrar'}}</button>
+  <button *ngIf="isEditMode" mat-raised-button color="warn" (click)="deleteEscola()" style="margin-right: 40px;">Excluir</button>
+</footer>
+
+<div *ngIf="isLoading">
+  <app-loading [message]="messageLoading"></app-loading>
+</div>
