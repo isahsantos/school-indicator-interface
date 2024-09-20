@@ -1,27 +1,119 @@
-# SchoolIndicator
+# 📚 Projeto School Indicator
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.2.2.
+![Angular](https://img.shields.io/badge/Angular-20-red?style=flat-square&logo=angular) ![Docker](https://img.shields.io/badge/Docker-20-blue?style=flat-square&logo=docker)
 
-## Development server
+Este é um projeto de um site para a conclusão da pós graduação de desenvolvimento full stack da PUC RIO digital, o site contem todas as operações de um crud para escola e responsáveis, como trabalho futuro entende-se que a adição de filtragens e ordenação ficaria como melhoria.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## 🎯 Funcionalidades
 
-## Code scaffolding
+- 🔍 Visualizar lista de escolas
+- 🏫 Cadastro, consulta, atualização e remoção de escolas
+- 👨‍👩‍👧 Cadastro, consulta, atualização e remoção  de responsáveis 
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## 🚀 Tecnologias
 
-## Build
+- **Frontend:** [Angular](https://angular.io/)
+- **Backend/API:** [Link para o Repositório da API](https://github.com/isahsantos/school-indicator-api)
+- **Containerização:** Docker
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+---
 
-## Running unit tests
+## 🛠️ Como Executar o Projeto
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Pré-requisitos
 
-## Running end-to-end tests
+- [Node.js](https://nodejs.org/) (v14 ou superior)
+- [Docker](https://www.docker.com/) e Docker Compose
+- A API deve estar a funcionar (ver instruções no [repositório da API](https://github.com/isahsantos/school-indicator-interface))
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### Passo a Passo
 
-## Further help
+1. **Clone o repositório**
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+   ```bash
+   git clone 
+   cd  school-indicator-interface
+
+2. **Configurar variáveis de ambiente**
+
+   Crie um arquivo `.env` na raiz do projeto e adicione as variáveis de ambiente necessárias para obter as informações da api, no arquivos de services subistitua http://127.0.0.1:5000 para a variável criada. Exemplo:
+
+   ```bash
+   API_URL=http://localhost:3000
+   ```
+
+3. **Executar o Docker**
+
+   O projeto vem com um arquivo `Dockerfile` e `docker-compose.yml` prontos. Para rodar o projeto no Docker, siga os seguintes passos:
+
+   - Para construir a imagem Docker:
+
+     ```bash
+     docker-compose build
+     ```
+
+   - Para iniciar o container:
+
+     ```bash
+     docker-compose up
+     ```
+
+4. **Acessar a aplicação**
+
+   Após o Docker iniciar o projeto, acesse a aplicação no navegador:
+
+   ```
+   http://localhost:8080
+   ```
+
+---
+
+## 🔧 Comandos Disponíveis
+
+### Rodar o Projeto em Desenvolvimento (sem Docker)
+
+Caso prefira rodar o projeto localmente sem Docker, siga estes passos:
+
+1. Instalar as dependências:
+
+   ```bash
+   npm install
+   ```
+
+2. Rodar o servidor de desenvolvimento:
+
+   ```bash
+   npm start
+   ```
+
+3. Acesse o projeto em `http://localhost:4200`.
+
+## 🖥️ Repositório da API
+
+Certifique-se de clonar e configurar o backend/API que está disponível no [repositório da API](https://github.com/isahsantos/school-indicator-api). Siga as instruções no repositório para configurar e rodar a API localmente.
+
+---
+
+## 📝 Estrutura do Projeto
+
+```plaintext
+school-indicator-interface/
+├── src/
+│   ├── app/
+│   │   ├── models/        # Modelo (tipagem) dos objetos
+│   │   ├── services/      # Serviços (comunicação com API)
+│   │   ├── shared/        # componentes compartilhados
+│   │   └── pages/         # páginas do site
+├── Dockerfile             # Dockerfile para containerização
+└── ...
+```
+
+---
+
+## 🛡️ Licença
+
+Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+
+---
+
+Feito com ❤️ por [Maria Isabela dos Santos Silva](https://github.com/isahsantos).
