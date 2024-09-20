@@ -10,6 +10,11 @@ Este é um projeto de um site para a conclusão da pós graduação de desenvolv
 - 🏫 Cadastro, consulta, atualização e remoção de escolas
 - 👨‍👩‍👧 Cadastro, consulta, atualização e remoção  de responsáveis 
 
+## Diagrama 
+
+![Diagrama do esquema ](https://github.com/isahsantos/school-indicator-interface/blob/main/src/assets/img/diagrama-aplication.png?raw=true)
+
+
 ## 🚀 Tecnologias
 
 - **Frontend:** [Angular](https://angular.io/)
