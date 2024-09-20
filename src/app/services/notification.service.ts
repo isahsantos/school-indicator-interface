@@ -53,4 +53,15 @@ export class NotificationService {
       cancelButtonText: 'não'
     });
   }
+  showSchoolContact( name:string, tel: string, title?: string ) {
+    var span = document.createElement("span");
+    span.innerHTML = `Nome: <b>${name}</b> <br> <br> Telefone:<b>${tel}</b> `;
+    return Swal.fire({
+      title: title,
+      html: span,
+      icon: 'info',
+      showCancelButton: false,
+      confirmButtonText: 'OK',
+    });
+  }
 }

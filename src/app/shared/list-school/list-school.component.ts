@@ -4,6 +4,7 @@ import { EscolaService } from '../../services/escola.service';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { ChipComponent } from '../chip/chip.component';
+import { NotificationService } from '../../services/notification.service';
 
 @Component({
   selector: 'app-list-school',
@@ -11,14 +12,14 @@ import { ChipComponent } from '../chip/chip.component';
   imports: [CommonModule, HttpClientModule, ChipComponent],
   templateUrl: './list-school.component.html',
   styleUrl: './list-school.component.scss',
-  providers:[EscolaService]
+  providers:[EscolaService, NotificationService]
 })
 export class ListSchoolComponent implements OnInit {
 
   escolas: Escola[] = []
   statusChips: { text: string, color: string }[] = [];
 
-  constructor(private escolaService: EscolaService) { }
+  constructor(private escolaService: EscolaService, private notificationService: NotificationService) { }
 
   ngOnInit(): void {
     this.escolaService.getEscolas().subscribe((data: Escola[]) => {
@@ -53,5 +54,8 @@ export class ListSchoolComponent implements OnInit {
       default:
         return 'blue';
     }
+  }
+  openInfoEscola(escola: Escola){
+   this.notificationService.showSchoolContact(escola.nome,escola.telefone, 'Dados da escola')
   }
 }
