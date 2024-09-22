@@ -1,0 +1,5 @@
+{{precoMin}}
+<mat-slider min="0" [max]="precoMaximo" step="100" showTickMarks discrete [displayWith]="formatLabel">
+  <input matSliderThumb   (input)="onSliderChange($event)"  [(ngModel)]="value" >
+</mat-slider>
+{{precoMaximo}}

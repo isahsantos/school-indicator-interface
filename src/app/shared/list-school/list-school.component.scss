@@ -1,3 +1,4 @@
+
 .school-card {
     border: 1px solid #e0e0e0;
     border-radius: 8px;
@@ -107,4 +108,30 @@
       max-width: calc(23% - 32px);
     }
   }
-  
+  .content-filter{
+    display: flex;
+    padding: 20px;
+    justify-content: center;
+    flex-direction: column;
+    border: 1px dashed #dad7d8; 
+    border-radius: 8px;
+    margin-top: 40px;
+    
+  }
+  section{
+    padding: 20px
+  }
+  .price-filter{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap:16px
+  }
+  .wrapper-filter{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 32px;
+
+  }

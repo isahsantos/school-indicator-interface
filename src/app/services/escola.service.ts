@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Escola } from '../models/escola-model';
 
 @Injectable({
@@ -10,11 +10,16 @@ export class EscolaService {
 
   private apiUrl = 'http://127.0.0.1:5000/api/escolas'; 
 
+  private escolasSubject = new BehaviorSubject<Escola[]>([]);
+  escolas$ = this.escolasSubject.asObservable();
+
   constructor(private http: HttpClient) { }
+
 
   getEscolas(): Observable<Escola[]> {
     return this.http.get<Escola[]>(this.apiUrl);
   }
+
   cadastrarEscola(escola: Escola): Observable<Escola> {
     return this.http.post<Escola>(this.apiUrl, escola);
   }
@@ -33,5 +38,20 @@ export class EscolaService {
   }
   deleteEscola(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  }
+  filtrarEscolasPorPreco(minPreco: number, maxPreco: number): Observable<Escola[]> {
+    const url = `${this.apiUrl}/filtro/preco?min_preco=${minPreco}&max_preco=${maxPreco}`;
+    return this.http.get<Escola[]>(url);
+  }
+
+  atualizarListaDeEscolasObservable(escolas: Escola[]) {
+    this.escolasSubject.next(escolas);
+  }
+  buscarEscolasPreco(minPreco: number, maxPreco: number): Observable<Escola[]> {
+    const url = `${this.apiUrl}/filtro/preco?min_preco=${minPreco}&max_preco=${maxPreco}`;
+    return this.http.get<Escola[]>(url);
+  }
+  buscarEscolasPorMetodologia(metodologia: string): Observable<any> {
+    return this.http.get<any[]>(`${this.apiUrl}/filtro/metodologia?metodologia=${metodologia}`);
   }
 }
