@@ -173,7 +173,17 @@ export class CreateSchoolComponent implements OnInit {
     );
   }
   deleteEscola(){
-    
+    if (this.isEditMode && this.currentId) {
+      this.escolaService.deleteEscola(this.currentId).subscribe(
+        () => {
+          this.notificationService.showSuccess('Escola excluída com sucesso');
+          this.router.navigate(['/cadastro-responsaveis'])
+        },
+        error => {
+          this.notificationService.showError('Erro ao excluir escola');
+        }
+      );
+  }
   }
   
 }
