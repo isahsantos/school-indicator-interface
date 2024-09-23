@@ -39,15 +39,9 @@ Este é um projeto de um site para a conclusão da pós graduação de desenvolv
    git clone 
    cd  school-indicator-interface
 
-2. **Configurar variáveis de ambiente**
 
-   Crie um arquivo `.env` na raiz do projeto e adicione as variáveis de ambiente necessárias para obter as informações da api, no arquivos de services subistitua http://127.0.0.1:5000 para a variável criada. Exemplo:
 
-   ```bash
-   API_URL=http://localhost:3000
-   ```
-
-3. **Executar o Docker**
+2. **Executar o Docker**
 
    O projeto vem com um arquivo `Dockerfile` e `docker-compose.yml` prontos. Para rodar o projeto no Docker, siga os seguintes passos:
 
@@ -63,7 +57,7 @@ Este é um projeto de um site para a conclusão da pós graduação de desenvolv
      docker-compose up
      ```
 
-4. **Acessar a aplicação**
+3. **Acessar a aplicação**
 
    Após o Docker iniciar o projeto, acesse a aplicação no navegador:
 
